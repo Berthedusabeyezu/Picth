@@ -30,7 +30,7 @@ class User(UserMixin,db.Model):
 
     def __repr__(self):
         return f'User {self.username}'
- 
+  
 
 class Pitch(db.Model):
     __tablename__ = 'pitches'
@@ -41,7 +41,7 @@ class Pitch(db.Model):
     cotegory = db.Column(db.String(255))
     upvote= db.Column(db.Integer)
     downvote = db.Column(db.Integer)
-    
+     
     # users = db.relationship('User',backref = 'role',lazy="dynamic")
     # all_pitchs = []
      # Some code is here
