@@ -46,6 +46,7 @@ def new_pitch(id):
 
     if form.validate_on_submit():
         title = form.title.data
+        category = form.data 
         pitch = form.pitch.data
         new_pitch = Pitch(category.id,title,category.poster,pitch)
         new_pitch.save_pitch()
@@ -54,7 +55,7 @@ def new_pitch(id):
 
         title = f'{category.title} pitch'
     return render_template('new_pitch.html',title = title, pitch_form = pitch, category = category )
-
+ 
 
 @main.route('/user/<uname>')
 def profile(uname):
