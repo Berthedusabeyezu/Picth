@@ -47,7 +47,7 @@ class Pitch(db.Model):
      # Some code is here
     # @classmethod
     # def get_pitchs(cls,id):
-    #     response = []
+    #     response = [] 
 
     #     for pitch in cls.all_pitchs:
     #         if pitch.pitche_id == id:
