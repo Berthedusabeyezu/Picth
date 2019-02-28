@@ -48,10 +48,10 @@ class Pitch(db.Model):
     downvote = db.Column(db.Integer)
     
     
-def save_pitch(self):
+def save_pitch():
     # self.session = save.Session()
-    session.add(self)
-    session.commit()
+    db.session.add(self)
+    db.session.commit()
 
 # @login_manager.user_loader
 # def load_user(user_id):
@@ -65,6 +65,10 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
     pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
 
+def save_comment():
+
+    db.session.add(new_comment)
+    db.session.commit()
     def __repr__(self):
         return f'User {self.comment}'
     

@@ -13,3 +13,6 @@ class UpdateProfile(FlaskForm):
     submit = SubmitField('Submit')
 
 
+class CommentForm(FlaskForm):
+    comment = TextAreaField('Comment ', validators=[Required()])
+    submit = SubmitField('Submit')

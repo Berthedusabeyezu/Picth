@@ -25,22 +25,28 @@
 
     <!-- Content block -->
    
-    {% block content %}
+{% block content %}
 
 <div class="container">
     <!-- <form>
         <input type="text" name="pitche_query" placeholder="Search for a Pitch" class="form-control">
         <input type="submit"  value="Submit" class="btn btn-default">
     </form> -->
+    <a href="/pitch/new" class="btn">new pitch</a>
 
-</div>
 
 {%for pitch in pitches%}
 <p>{{pitch.category}}</p>
+<a href="{{url_for('main.new_comment')}}" >new comment</a>
 {%endfor%}
-<a href="/pitch/new" class="btn">new pitch</a>
 
+{%for comment in form%}
+    <p>{{comment.title}}</p>
+{%endfor%}
+
+ 
 {% endblock%}
-       
+
+</div>
 </body>
 </html>

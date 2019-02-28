@@ -1,7 +1,7 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
-from ..models import Pitch,User
-from .forms import PitchForm
+from ..models import Pitch,User,Comment
+from .forms import PitchForm,CommentForm
 from flask_login import login_required, current_user
 from .forms import PitchForm,UpdateProfile
 from .. import db,photos
@@ -14,9 +14,9 @@ from ..email import mail_message
 @main.route('/')
 def index():
 
-   
+    pitches=Pitch.query.all()
     title = 'Home - Welcome to The best Pitch IP'
-    return render_template('index.html', title = title )
+    return render_template('index.html', title = title,pitches = pitches)
 @main.route('/pitches/<int:id>')
 def pitches(pitch_id):
 
@@ -47,7 +47,9 @@ def new_pitch():
         title = form.title.data
         category = form.category.data
         new_pitch = Pitch(title = title, category = category, user_id = current_user.id)
-        new_pitch.save_pitch()
+
+        db.session.add(new_pitch)
+        db.session.commit()
         return redirect(url_for('.index',category=category))
 
     return render_template('new_pitch.html',pitch_form=form)
@@ -92,7 +94,23 @@ def update_pic(uname):
     return redirect(url_for('main.profile',uname=uname))
 
 
+@main.route('/comment/new', methods = ['GET','POST'])
+@login_required
+def new_comment(pitch_id):
+    form = CommentForm()
+    
+   
 
+    if form.validate_on_submit():
+        comment = form.comment.data
+        new_comment = Comment(comment = comment, user_id = current_user.id, pitch_id = pitch.id )
+
+        db.session.add(new_comment)
+        db.session.commit()
+        return redirect(url_for('.index',comment=comment))
+    comment = query.filter_by().all(pitch_id)    
+
+    return render_template('new_comment.html',comment_form=form)
 
 
     

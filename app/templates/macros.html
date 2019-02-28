@@ -21,3 +21,14 @@
     </div>
     {% endfor %}
 {% endmacro %} 
+
+
+{% macro displayCommentList(pitch_list) %}
+    {%for comment in form%}
+    <p>{{comment.title}}</p>
+{%endfor%}
+{% endmacro %} 
+
+<!-- {%for comment in form%}
+<p>{{comment.title}}</p>
+{%endfor%} -->
