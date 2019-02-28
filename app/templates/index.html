@@ -35,7 +35,10 @@
 
 </div>
 
-    
+{%for pitch in pitches%}
+<p>{{pitch.category}}</p>
+{%endfor%}
+<a href="/pitch/new" class="btn">new pitch</a>
 
 {% endblock%}
        

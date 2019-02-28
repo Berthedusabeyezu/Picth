@@ -5,9 +5,13 @@ from flask_login import UserMixin
 
  
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
+
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(255))
     email = db.Column(db.String(255),unique = True,index = True)
@@ -36,31 +40,23 @@ class Pitch(db.Model):
     __tablename__ = 'pitches'
 
     id = db.Column(db.Integer,primary_key = True)
+    title = db.Column(db.String(255))
     description = db.Column(db.String(255))
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
-    cotegory = db.Column(db.String(255))
+    category = db.Column(db.String(255))
     upvote= db.Column(db.Integer)
     downvote = db.Column(db.Integer)
-     
-    # users = db.relationship('User',backref = 'role',lazy="dynamic")
-    # all_pitchs = []
-     # Some code is here
-    # @classmethod
-    # def get_pitchs(cls,id):
-    #     response = [] 
+    
+    
+def save_pitch(self):
+    # self.session = save.Session()
+    session.add(self)
+    session.commit()
 
-    #     for pitch in cls.all_pitchs:
-    #         if pitch.pitche_id == id:
-    #             response.append(pitch)
-
-    #     return response
-    def __repr__(self):
-        return f'User {self.description}'
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
+# @login_manager.user_loader
+# def load_user(user_id):
+#     return User.get(user_id)
+    
 class Comment(db.Model):
     __tablename__ = 'comments'
 

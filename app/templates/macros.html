@@ -1,19 +1,19 @@
-{% macro displayPitcheList(pitche_list) %}
+<!-- {% macro displayPitcheList(pitch_list) %}
 
-    {% for pitche in pitche_list %}
-        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 pitche-card">
-            <img src="{{ pitche.poster }}" alt="{{ pitche.title }} poster" class="img-responsive">
+    {% for pitch in pitch_list %}
+        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 pitch-card">
+            <img src="{{ pitch.poster }}" alt="{{ pitch.title }} poster" class="img-responsive">
             <li class="text-center">
-                <a href="/pitche/{{pitche.id}}">
-                    {{ pitche.title|truncate(10)}}</a>
+                <a href="/pitch/{{pitch.id}}">
+                    {{ pitch.title|truncate(10)}}</a>
             </li>
         </div>
 
     {% endfor %}
 
-{% endmacro %}
+{% endmacro %} -->
 <!-- < Displaying reviews macro -->
-{% macro displayPitchs(pitch_list) %}
+{% macro displayPitchList(pitch_list) %}
     {% for pitch in pitch_list %}
     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 pitch-card">
         <h2> {{ pitch.title}} </h2>
