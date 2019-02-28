@@ -10,9 +10,9 @@ This project it deal with the user can login and logout and then would like to s
 ## project setup instructions
 Must use chrome and edit textor
  
-## link to live site on GitHub Pages
+## project setup instructions
 https://github.com/Berthedusabeyezu/Picth
 
 ## copyright and license information
 This project is under MIT License. Copyright (c) 2019 Berthe
-  
+    
