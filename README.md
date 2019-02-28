@@ -9,7 +9,7 @@ This project it deal with the user can login and logout and then would like to s
 
 ## project setup instructions
 Must use chrome and edit textor
-
+ 
 ## link to live site on GitHub Pages
 https://github.com/Berthedusabeyezu/Picth
 
