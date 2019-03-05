@@ -29,12 +29,13 @@
 
 <div class="container">
     
-    <a href="/pitch/new" class="btn">new pitch</a>
+     
+    <a href="/pitch/new" class="btn"><button><strong>new pitch</strong></button></a><br>
 
 {{macro.displayComment(comment)}}
 {%for pitch in pitches%}
 <p>{{pitch.category}}</p>
-<a href="/comment/new/{{pitch.id}}" >new comment</a>
+<a href="/comment/new/{{pitch.id}}"><button><strong>new comment</strong></button></a>
 {%endfor%}
 
 </div>
