@@ -24,24 +24,13 @@ def pitches(pitch_id):
     View movie page function that returns the movie details page and its data
     '''
     return render_template('pitch.html')
-# @main.route('/movie/<int:id>')
-# def movie(id):
-
-#     '''
-#     View movie page function that returns the movie details page and its data
-#     '''
-#     movie = get_movie(id)
-#     title = f'{movie.title}'
-#     reviews = Review.get_reviews(movie.id)
-
-#     return render_template('movie.html',title = title)
 
 @main.route('/pitch/new', methods = ['GET','POST'])
 @login_required
 def new_pitch():
     form = PitchForm()
     
-    # pitche= get_pitche(id)
+  
 
     if form.validate_on_submit():
         title = form.title.data
@@ -94,23 +83,20 @@ def update_pic(uname):
     return redirect(url_for('main.profile',uname=uname))
 
 
-@main.route('/comment/new', methods = ['GET','POST'])
+@main.route('/comment/new/<int:id>', methods = ['GET','POST'])
 @login_required
-def new_comment(pitch_id):
+def new_comment(id):
     form = CommentForm()
+    pitch=Pitch.query.filter_by(id=id).first()
     
-   
 
     if form.validate_on_submit():
         comment = form.comment.data
-        new_comment = Comment(comment = comment, user_id = current_user.id, pitch_id = pitch.id )
+        new_comment = Comment(comment = comment,pitch = pitch, user_id = current_user.id)
 
         db.session.add(new_comment)
         db.session.commit()
-        return redirect(url_for('.index',comment=comment))
-    comment = query.filter_by().all(pitch_id)    
+        return redirect(url_for('main.index'))
+    comment=Comment.query.filter_by(id=id).all()
 
-    return render_template('new_comment.html',comment_form=form)
-
-
-    
+    return render_template('comment.html',comment_form=form , comment = comment)

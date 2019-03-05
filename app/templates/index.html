@@ -1,4 +1,5 @@
-
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,14 +9,13 @@
         {% else %}
         <title> Welcome to the best Pitcth IP </title>
         {% endif %}
-        {% extends 'base.html'%}
-        {% import 'macros.html' as macro%}
+        
 
-<!-- Styles block -->
+
 
         {% block styles%}
         {{ super() }}
-        <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+        <link rel="stylesheet" href="{{url_for('static',filename='index.css')}}">
         {% endblock %}
         
     </head>
@@ -23,30 +23,23 @@
     <body>
     
 
-    <!-- Content block -->
+  
    
 {% block content %}
 
 <div class="container">
-    <!-- <form>
-        <input type="text" name="pitche_query" placeholder="Search for a Pitch" class="form-control">
-        <input type="submit"  value="Submit" class="btn btn-default">
-    </form> -->
+    
     <a href="/pitch/new" class="btn">new pitch</a>
 
-
+{{macro.displayComment(comment)}}
 {%for pitch in pitches%}
 <p>{{pitch.category}}</p>
-<a href="{{url_for('main.new_comment')}}" >new comment</a>
+<a href="/comment/new/{{pitch.id}}" >new comment</a>
 {%endfor%}
 
-{%for comment in form%}
-    <p>{{comment.title}}</p>
-{%endfor%}
-
- 
+</div>
 {% endblock%}
  
-</div>
+
 </body>
 </html>

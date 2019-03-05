@@ -1,34 +1,32 @@
-<!-- {% macro displayPitcheList(pitch_list) %}
+{% macro displayPost(posts) %}
 
-    {% for pitch in pitch_list %}
-        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 pitch-card">
-            <img src="{{ pitch.poster }}" alt="{{ pitch.title }} poster" class="img-responsive">
-            <li class="text-center">
-                <a href="/pitch/{{pitch.id}}">
-                    {{ pitch.title|truncate(10)}}</a>
-            </li>
-        </div>
+    {% for post in posts %}
+        <div style="background-color: bisque">
+            <div class="container">
+            
+
+                <h2 class="tle">{{pitch.title}} </h2>
+                <p >{{pitch.description}}</p>
+                <div class="bttn">
+                    <a href="/pitch/{{pitch.id}}" class="pst"><button><strong>view comment</strong></button></a><br>
+                    <a href="comment/new/{{pitch.id}}" class="btn btn_primary"><button><strong>Add Comment</strong></button></a>
+                    
+                </div>  
+        
 
     {% endfor %}
 
-{% endmacro %} -->
-<!-- < Displaying reviews macro -->
-{% macro displayPitchList(pitch_list) %}
-    {% for pitch in pitch_list %}
-    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 pitch-card">
-        <h2> {{ pitch.title}} </h2>
-        <p> {{ pitch.pitch | truncate(30) }}</p>
-    </div>
-    {% endfor %}
 {% endmacro %} 
 
+<h3>Comments</h3>
+{% macro displayComment(comments) %}
+              
 
-{% macro displayCommentList(pitch_list) %}
-    {%for comment in form%}
-    <p>{{comment.title}}</p>
-{%endfor%}
-{% endmacro %} 
+    {%for comment in comments%}
+        <p>{{comment.comment}}</p>
+        
+    {%endfor%}
 
-<!-- {%for comment in form%}
-<p>{{comment.title}}</p>
-{%endfor%} -->
+       </div>
+{% endmacro %}  
+
